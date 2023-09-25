@@ -1,4 +1,4 @@
-Consider a structure names Student with attributes as SID, NAME, BRANCH, SEMESTER, ADDRESS.
+Consider a structure named Student with attributes as SID, NAME, BRANCH, SEMESTER, ADDRESS.
 Write a program in C/C++ and perform the following operations using the concept of files 
 a. Insert a new student
 b. Modify the address of the student based on SID
