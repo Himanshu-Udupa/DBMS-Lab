@@ -1,4 +1,3 @@
-drop database if exists enrollment;
 create database enrollment;
 use enrollment;
 
@@ -122,7 +121,6 @@ SELECT DISTINCT c.dept
 
 
 -- List the students who have scored maximum marks in ‘DBMS’ course.
-
 select name from Student s, Enroll e, Course c
 where s.regno=e.regno and e.course=c.course and c.cname="DBMS" and e.marks in (select max(marks) from Enroll e1, Course c1 where c1.cname="DBMS" and c1.course=e1.course);
 
@@ -134,21 +132,6 @@ where e.course=c.course and e.regno="01HF235";
 
 select * from CoursesOptedByStudent;
 
-
--- Create a view to show the enrolled details of a student.
-create view StudentEnrollmentDetails as
-select * from Enroll 
-where regno="01HF235";
-
-select * from StudentEnrollmentDetails;
-
--- Create a view to display course related books from course_adoption and text book table using book_ISBN. 
-create view CourseRelatedBooks as
-select cname, book_title
-from Course c, TextBook tb, BookAdoption ba
-where c.course=ba.course and tb.bookIsbn=ba.bookIsbn;
-
-select * from CourseRelatedBooks;
 
 -- Create a trigger such that it Deletes all records from enroll table when course is deleted 
 DELIMITER //
