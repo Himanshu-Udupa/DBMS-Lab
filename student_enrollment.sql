@@ -133,19 +133,6 @@ where e.course=c.course and e.regno="01HF235";
 select * from CoursesOptedByStudent;
 
 
--- Create a trigger such that it Deletes all records from enroll table when course is deleted 
-DELIMITER //
-create or replace trigger DeleteRecords
-after delete on Course
-for each row
-BEGIN
-	DELETE FROM Enroll where Enroll.course=OLD.course;
-END;//
-
-DELIMITER ;
-
-delete from Course where course=2; -- Will also delete records from Enroll table
-
 -- Create a trigger that prevents a student from enrolling in a course if the marks pre_requisit is less than the given threshold 
 DELIMITER //
 create or replace trigger PreventEnrollment
